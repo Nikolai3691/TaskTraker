@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Optional
 
 from pydantic import BaseModel
 
@@ -9,11 +10,19 @@ class CreateEmployee(BaseModel):
     degree: str
 
 
-class CreateTask(BaseModel):
+class CreateTaskFirst(BaseModel):
     id: int
-    title: str
-    employee: str
-    employee_id: int
-    parent: str
-    parent_id: int
+    task: str
+    # status: str
+    # parent_id: Optional[int]
+    # employee_id: Optional[int]
+    deadline: datetime
+
+
+class CreateTaskNext(BaseModel):
+    id: int
+    task: str
+    status: str
+    parent_id: Optional[int]
+    employee_id: Optional[int]
     deadline: datetime
