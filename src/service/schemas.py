@@ -9,6 +9,11 @@ class CreateEmployee(BaseModel):
     degree: str
 
 
+class EmployeeUpdate(BaseModel):
+    ful_name: str
+    degree: str
+
+
 class CreateHeadTask(BaseModel):
     task: str
     employee_id: Optional[int]
@@ -19,5 +24,20 @@ class CreateTask(BaseModel):
     task: str
     status: Optional[str]
     parent_id: Optional[int]
+    employee_id: Optional[int]
+    deadline: datetime
+
+
+class UpdateTask(BaseModel):
+    task: str
+    status: Optional[str]
+    parent_id: Optional[int]
+    employee_id: Optional[int]
+    deadline: datetime
+
+
+class UpdateHeadTask(BaseModel):
+    task: str
+    status: Optional[str]
     employee_id: Optional[int]
     deadline: datetime
