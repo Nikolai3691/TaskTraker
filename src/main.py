@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from service.router import *
+from service.router import router_service, router_task, router_employee
 
 app = FastAPI(title='TaskTracker')
 

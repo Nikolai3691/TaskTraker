@@ -4,7 +4,6 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from alembic import context
 from src.config import DB_HOST, DB_PORT, DB_USER, DB_NAME, DB_PASS
 from src.service.models import Base
 import os
@@ -31,6 +30,8 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 target_metadata = Base.metadata
+
+
 # target_metadata = None
 
 # other values from the config, defined by the needs of env.py,

@@ -4,24 +4,23 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-class GetEmployee(BaseModel):
+class Schemas(BaseModel):
+    class Config:
+        orm_mode = True
+
+
+class GetEmployee(Schemas):
     id: int
     ful_name: str
     degree: str
 
-    class Config:
-        orm_mode = True
 
-
-class GetBusyEmployee(BaseModel):
+class GetBusyEmployee(Schemas):
     employee: list['GetEmployee']
     task: str
 
-    class Config:
-        orm_mode = True
 
-
-class GetTask(BaseModel):
+class GetTask(Schemas):
     id: int
     task: str
     status: str
@@ -31,62 +30,40 @@ class GetTask(BaseModel):
     employee_id: int
     deadline: datetime
 
-    class Config:
-        orm_mode = True
 
-
-class CreateEmployee(BaseModel):
-
+class CreateEmployee(Schemas):
     ful_name: str
     degree: str
 
-    class Config:
-        orm_mode = True
 
-
-class EmployeeUpdate(BaseModel):
+class EmployeeUpdate(Schemas):
     ful_name: str
     degree: str
 
-    class Config:
-        orm_mode = True
 
-
-class CreateHeadTask(BaseModel):
+class CreateHeadTask(Schemas):
     task: str
     employee_id: Optional[int]
     deadline: datetime
 
-    class Config:
-        orm_mode = True
 
-
-class CreateTask(BaseModel):
+class CreateTask(Schemas):
     task: str
     parent_id: Optional[int]
     employee_id: Optional[int]
     deadline: datetime
 
-    class Config:
-        orm_mode = True
 
-
-class UpdateTask(BaseModel):
+class UpdateTask(Schemas):
     task: str
     status: Optional[str]
     parent_id: Optional[int]
     employee_id: Optional[int]
     deadline: datetime
 
-    class Config:
-        orm_mode = True
 
-
-class UpdateHeadTask(BaseModel):
+class UpdateHeadTask(Schemas):
     task: str
     status: Optional[str]
     employee_id: Optional[int]
     deadline: datetime
-
-    class Config:
-        orm_mode = True
