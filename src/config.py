@@ -10,3 +10,11 @@ DB_USER = os.environ.get("DB_USER")
 DB_PASS = os.environ.get("DB_PASS")
 
 SECRET_AUTH = os.environ.get("SECRET_AUTH")
+#
+
+#
+
+#
+# sys.path.insert(0, '/'.join(os.path.dirname(os.path.abspath(__file__)).split('/')[:-1]))
+#
+

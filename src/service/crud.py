@@ -61,11 +61,11 @@ async def update_head_task(session: AsyncSession, head_task_id: int, new_head_ta
     return new_head_task
 
 
-async def update_task(session: AsyncSession, head_task_id: int, new_head_task: UpdateTask):
-    new_task = update(TasksModel).where(TasksModel.id == head_task_id)
-    await session.execute(new_task.values(**new_head_task.dict()))
+async def update_task(session: AsyncSession, task_id: int, new_task: UpdateTask):
+    task = update(TasksModel).where(TasksModel.id == task_id)
+    await session.execute(task.values(**new_task.dict()))
     await session.commit()
-    return new_head_task
+    return new_task
 
 
 async def delete_task(session: AsyncSession, delete_id: int):
@@ -89,5 +89,4 @@ async def get_task_not_in_work(session: AsyncSession):
 async def get_list_objects(session: AsyncSession):
     list_objects = select(TasksModel).filter(TasksModel.parent_id == None).options(subqueryload(TasksModel.employee))
     return [(el.task, el.deadline, [el.employee.ful_name]) for el in await session.scalars(list_objects)]
-    # return [f'Важная задача: {el.task}, Срок: {el.deadline} Сотрудник - {el.employee.ful_name}'
-    #         for el in await session.scalars(list_objects)]
+

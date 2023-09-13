@@ -36,9 +36,12 @@ class GetTask(BaseModel):
 
 
 class CreateEmployee(BaseModel):
-    id: int
+
     ful_name: str
     degree: str
+
+    class Config:
+        orm_mode = True
 
 
 class EmployeeUpdate(BaseModel):
@@ -60,7 +63,6 @@ class CreateHeadTask(BaseModel):
 
 class CreateTask(BaseModel):
     task: str
-    status: Optional[str]
     parent_id: Optional[int]
     employee_id: Optional[int]
     deadline: datetime

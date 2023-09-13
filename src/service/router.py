@@ -23,7 +23,7 @@ router_service = APIRouter(
 )
 
 
-@router_employee.post("/add", response_model=GetEmployee)
+@router_employee.post("/add", response_model=CreateEmployee)
 async def add_employee(new_employee: CreateEmployee, session: AsyncSession = Depends(get_async_session)):
     return await crud.add_employee(session=session, new_employee=new_employee)
 
@@ -68,9 +68,9 @@ async def update_head_task(head_task_id: int, new_head_task: UpdateHeadTask,
 
 
 @router_task.put("/update", response_model=UpdateTask)
-async def update_task(head_task_id: int, new_head_task: UpdateTask,
+async def update_task(task_id: int, new_task: UpdateTask,
                       session: AsyncSession = Depends(get_async_session)):
-    return await crud.update_task(head_task_id=head_task_id, new_head_task=new_head_task, session=session)
+    return await crud.update_task(task_id=task_id, new_task=new_task, session=session)
 
 
 @router_task.delete("/delete")
