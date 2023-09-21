@@ -1,8 +1,8 @@
 from sqlalchemy import select, insert, delete, update
 
 from sqlalchemy.orm import subqueryload
-from service.models import EmployeesModel, TasksModel
-from service.schemas import CreateEmployee, CreateTask, CreateHeadTask, EmployeeUpdate, UpdateTask, UpdateHeadTask
+from src.service.models import EmployeesModel, TasksModel
+from src.service.schemas import CreateEmployee, CreateTask, CreateHeadTask, EmployeeUpdate, UpdateTask, UpdateHeadTask
 from sqlalchemy.ext.asyncio import AsyncSession
 
 

@@ -1,7 +1,7 @@
 from sqlalchemy import String, Column, Integer, ForeignKey, DateTime
 from sqlalchemy.orm import mapped_column, relationship
 
-from database import Base
+from src.database import Base
 
 
 class EmployeesModel(Base):
